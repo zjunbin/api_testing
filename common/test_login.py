@@ -3,11 +3,11 @@
 # @Author    :zjunbin
 # @Email     :648060307@qq.com
 # @File      :test_login.py
-from api_testing.common.read_excel import ReadExcel
-from api_testing.common.mylog import MyLog
-from api_testing.common.request import Request
-from api_testing.common.doregex import *
-from api_testing.common.readconfig import ReadConfig
+from common.read_excel import ReadExcel
+from common.mylog import MyLog
+from common.request import Request
+from common.doregex import *
+from common.readconfig import ReadConfig
 from ddt import ddt, data, unpack
 import unittest
 import json

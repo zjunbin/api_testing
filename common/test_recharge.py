@@ -3,11 +3,11 @@
 # @Author    :zjunbin
 # @Email     :648060307@qq.com
 # @File      :test_recharge.py
-from api_testing.common.read_excel import ReadExcel
-from api_testing.common.request import Request
-from api_testing.common.doregex import *
-from api_testing.common.mysql import MySql
-from api_testing.common.mylog import MyLog
+from common.read_excel import ReadExcel
+from common.request import Request
+from common.doregex import *
+from common.mysql import MySql
+from common.mylog import MyLog
 from ddt import ddt, data
 import unittest
 import json

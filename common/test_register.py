@@ -4,11 +4,11 @@
 # @Email     :648060307@qq.com
 # @File      :test_register.py
 import unittest
-from api_testing.common.read_excel import ReadExcel
-from api_testing.common.readconfig import ReadConfig
-from api_testing.common.request import Request
-from api_testing.common.mylog import MyLog
-from api_testing.common.mysql import MySql
+from common.read_excel import ReadExcel
+from common.readconfig import ReadConfig
+from common.request import Request
+from common.mylog import MyLog
+from common.mysql import MySql
 from ddt import ddt, data
 import json
 

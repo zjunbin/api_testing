@@ -4,12 +4,14 @@
 # @Email     :648060307@qq.com
 # @File      :mysql.py
 import pymysql
-from api_testing.common.doregex import *
+from common.doregex import *
+from common.readconfig import ReadConfig
 
-conf = ReadConfig()
+
 
 class MySql:
     def __init__(self):
+        conf = ReadConfig()
         host = conf.get('mysql', 'host')
         user = conf.get('mysql', 'user')
         password = conf.get('mysql', 'pwd')
@@ -39,7 +41,7 @@ class MySql:
 
 if __name__ == '__main__':
     mysql = MySql()
-    sql = 'SELECT * FROM future.member WHERE MobilePhone = "13822221199"'
+    sql = 'SELECT * FROM future.member WHERE MobilePhone = "13822221114"'
     value =mysql.fet_one(sql)
     print(type(value))
     try:

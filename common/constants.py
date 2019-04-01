@@ -17,5 +17,9 @@ log_path =os.path.join(path,'logs','log.log')
 data_case = os.path.join(path,'datas','api_case.xlsx')
 # 测试报告存放
 result_path = os.path.join(path,'result','result.html')
+
+common_path = os.path.join(path,'common')
+
+
 if __name__ == '__main__':
     print(path)

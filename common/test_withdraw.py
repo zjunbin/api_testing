@@ -3,13 +3,13 @@
 # @Author    :zjunbin
 # @Email     :648060307@qq.com
 # @File      :test_withdraw.py
-from api_testing.common.request import Request
-from api_testing.common.read_excel import ReadExcel
-from api_testing.common.mysql import MySql
-from api_testing.common.doregex import *
+from common.request import Request
+from common.read_excel import ReadExcel
+from common.mysql import MySql
+from common.doregex import *
 from ddt import ddt, data
-from api_testing.common.mylog import MyLog
-from api_testing.common.readconfig import ReadConfig
+from common.mylog import MyLog
+from common.readconfig import ReadConfig
 import unittest
 import json
 
