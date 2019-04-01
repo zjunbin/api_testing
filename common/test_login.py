@@ -31,7 +31,7 @@ class Login(unittest.TestCase):
         else:
             cookies = None
         mylog.debug('获取到的cookies值是：{}'.format(cookies))
-        params = json.loads(params)
+        params = json.loads(DoRegex().replace(params))
         url = self.conf.get('url', 'url') + url
         resp = Request(method=method, url=url, data=params, cookies=cookies)
         mylog.info('执行{}的用例'.format(title))

@@ -60,7 +60,7 @@ class LoadAdd(unittest.TestCase):
                 self.assertEqual(check_db['Title'],params['title'])
                 relust = 'Pass'
             elif resp.get_json()['msg'] == '登录成功':
-                self.mylog.info('登录用户：{}'.format(params['admin_user']))
+                self.mylog.info('登录成功')
             else:
                 sql = 'SELECT * FROM future.loan  WHERE MemberID = "{}" and Title = "{}"'.format(
                     getattr(contex, 'normal_user_id'), params['title'])

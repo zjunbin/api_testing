@@ -41,12 +41,13 @@ class Recharge(unittest.TestCase):
             COOKIES = getattr(contex, 'COOKIES')
         else:
             COOKIES = None
+        url = self.conf.get('url', 'url') + item['url']
         params = item['params']
         '''通过读取配置文件替换params中的用户名或密码，并序列化'''
         params = json.loads(DoRegex().replace(params))
         self.mylog.info('执行第《{}》条用例，传入的参数是{}'.format(item['caseid'], params))
         url = self.conf.get('url', 'url') + item['url']
-        resp = Request(method=item['method'], url=item['url'], data=params, cookies=COOKIES)
+        resp = Request(method=item['method'], url=url, data=params, cookies=COOKIES)
         '''登陆成功后将获取到的值通过反射写入到配置类中'''
         if resp.get_cookies():
             setattr(contex, 'COOKIES', resp.get_cookies())
@@ -72,3 +73,5 @@ class Recharge(unittest.TestCase):
         finally:
             read.write_result('recharge', item['caseid'], resp.get_txt(), result)
             self.mylog.info('写入测试结果，执行第《{}》条用例，运行结果为{}'.format(item['caseid'], result))
+
+
