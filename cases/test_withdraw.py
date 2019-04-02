@@ -28,12 +28,13 @@ class Withdraw(unittest.TestCase):
 
     def setUp(self):
         sql = 'SELECT * FROM future.member WHERE MobilePhone = "{}" '.format(getattr(contex,'withdraw_user'))
-        value = MySql().fet_one(sql=sql)
+        self.mysql = MySql()
+        value = self.mysql.fet_one(sql=sql)
         setattr(contex, 'LeaveAmount', value['LeaveAmount'])
         setattr(contex,'withdraw_user_id',value['Id'])
 
     def tearDown(self):
-        MySql().mysql_close()
+        self.mysql.mysql_close()
 
     @data(*data_case)
     def test_withdraw(self, item):

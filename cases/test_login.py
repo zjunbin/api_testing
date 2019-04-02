@@ -20,6 +20,7 @@ class Login(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.conf = ReadConfig()
+        cls.mylog = MyLog()
 
     @data(*data_list)
     @unpack

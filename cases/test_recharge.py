@@ -18,7 +18,7 @@ data_case = read.read_excel('recharge')
 
 @ddt
 class Recharge(unittest.TestCase):
-
+    @classmethod
     def setUpClass(cls):
         cls.mylog = MyLog()
 
@@ -61,7 +61,7 @@ class Recharge(unittest.TestCase):
             self.mylog.error('执行《{}》用例，执行结果是：{}'.format(item['title'], result))
             raise e
         finally:
-            read.write_result('register', item['caseid'], resp.get_txt(), result)
+            read.write_result('recharge', item['caseid'], resp.get_txt(), result)
 
 
 

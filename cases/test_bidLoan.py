@@ -19,7 +19,7 @@ data_case = read.read_excel('bidLoan')
 
 
 @ddt
-class LidLoan(unittest.TestCase):
+class BidLoan(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.conf = ReadConfig()

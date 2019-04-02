@@ -21,14 +21,13 @@ class LoadAdd(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.mylog = MyLog()
-        cls.mylog = MyLog()
+        cls.conf = ReadConfig()
         sql = 'SELECT Id FROM future.member WHERE MobilePhone = "{}"'.format(getattr(contex,'normal_user'))
         value = MySql().fet_one(sql)
         setattr(contex,'normal_user_id',str(value['Id']))
 
     def setUp(self):
         self.mysql = MySql()
-        self.conf = ReadConfig()
         new_title = self.conf.get('project', 'new_title')
         new_title2 = new_title[:3] + str(int(new_title[3::1]) + 1)  # 加标成功后重新生成一个新的标名
         self.conf.set('project', 'new_title', new_title2)
@@ -36,7 +35,7 @@ class LoadAdd(unittest.TestCase):
 
     @data(*data_case)
     def test_loadadd(self,item):
-        global relust
+        global result
         if hasattr(contex,'COOKIES'):
             COOKIES = getattr(contex,'COOKIES')
         else:
@@ -59,6 +58,7 @@ class LoadAdd(unittest.TestCase):
                 result = 'Pass'
                 self.mylog.info('执行《{}》用例，执行结果是：{}'.format(item['title'], result))
             elif resp.get_json()['msg'] == '登录成功':
+                result = 'Pass'
                 self.mylog.info('登录成功')
             else:
                 sql = 'SELECT * FROM future.loan  WHERE MemberID = "{}" and Title = "{}"'.format(
@@ -73,7 +73,7 @@ class LoadAdd(unittest.TestCase):
             self.mylog.error('执行《{}》用例，执行结果是：{}'.format(item['title'], result))
             raise e
         finally:
-            read.write_result('addloan',item['caseid'],resp.get_txt(),relust)
+            read.write_result('addloan',item['caseid'],resp.get_txt(),result)
             self.mylog.info('《{}》用例，测试结果写入完成'.format(item['title']))
 
 
