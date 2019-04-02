@@ -16,7 +16,7 @@ class MyLog:
         # log_path 日志的存放路径和文件名称
         log_path = constants.log_path
         filename = log_path + time.strftime('%Y%m%d',time.localtime(time.time()))
-        fh = logging.FileHandler(filename,'a+',encoding='utf-8')
+        fh = logging.FileHandler(filename,encoding='utf-8')
         # 获取配置文件中的文件日志输出级别
         fh.setLevel(ReadConfig().get('testconfig', 'fh_level'))
         # 获取配置文件中的日志输出格式

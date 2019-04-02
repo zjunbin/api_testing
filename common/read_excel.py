@@ -61,6 +61,6 @@ class ReadExcel:
 
 if __name__ == '__main__':
     wb = ReadExcel()
-    data_list = wb.read_excel('recharge')
+    data_list = wb.read_excel('bidLoan')
     # wb.write_result('login',3,'aa','bb')
     print(data_list)

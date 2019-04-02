@@ -22,4 +22,9 @@ common_path = os.path.join(path,'common')
 
 
 if __name__ == '__main__':
-    print(path)
+    from  decimal import Decimal
+    a = Decimal(11.99)
+    b = '0.01'
+    c = Decimal(b)
+    print(c)
+

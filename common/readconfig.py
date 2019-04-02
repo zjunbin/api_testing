@@ -49,4 +49,6 @@ if __name__ == '__main__':
     conf = ReadConfig()
     new_title = conf.get('project', 'title')
     new_title2 = new_title[:4] + str(int(new_title[4::1]) + 1)  # 加标成功后重新生成一个新的标名
+    conf.set('project', 'title', new_title2)
     print(new_title2)
+

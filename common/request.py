@@ -19,24 +19,18 @@ class Request:
             except AttributeError as e:
                 mylog.error(e)
                 raise e
-            finally:
-                mylog.info('服务器响应码是：{}'.format(self.resp.status_code))
         elif method == 'post':
             try:
                 self.resp = requests.post(url=url, data=data ,cookies = cookies)
             except AttributeError as e:
                 mylog.error(e)
                 raise e
-            finally:
-                mylog.info('服务器响应码是：{}'.format(self.resp.status_code))
         elif method == 'delete':
             try:
                 self.resp = requests.delete(url=url, param=data)
             except AttributeError as e:
                 mylog.error(e)
                 raise e
-            finally:
-                mylog.info('服务器响应码是：{}'.format(self.resp.status_code))
         else:
             print('None')
             mylog.info('请求参数有问题，请检查')
@@ -47,10 +41,10 @@ class Request:
     def get_json(self):
         return self.resp.json()
 
-    def get_cookies(self):
+    def cookies(self):
         return  self.resp.cookies
 
-    def get_status_code(self):
+    def status_code(self):
         return self.resp.status_code
 
 if __name__ == '__main__':
