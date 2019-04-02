@@ -6,6 +6,11 @@
 import openpyxl
 from common.mylog import MyLog
 from common import constants
+import sys
+import os
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+sys.path.append(rootPath)
 data_file = constants.data_case
 mylog = MyLog()
 
