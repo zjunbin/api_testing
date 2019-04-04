@@ -4,64 +4,69 @@
 # @Email     :648060307@qq.com
 # @File      :test_register.py
 import unittest
-from common.read_excel import ReadExcel
+from common.read_excel import DoExcel
+from  common import constants
 from common.readconfig import ReadConfig
-from common.doregex import *
 from common.request import Request
 from common.mylog import MyLog
-from common.mysql import MySql
-from ddt import ddt, data
+from common.mysql import *
+from ddt import ddt,data
 import json
 
-read = ReadExcel()
-data_case = read.read_excel('register')
+read = DoExcel(constants.data_case,'register')
+data_case = read.get_case()
 conf = ReadConfig()
-
 COOKIES = None
 
-
 @ddt
-class Register(unittest.TestCase):
+class TestRegister(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.conf = ReadConfig()
         cls.mylog = MyLog()
 
+
     def setUp(self):
-        self.mysql = MySql()
+        self.mylog.debug('开始http请求')
 
     def tearDown(self):
-        self.mysql.mysql_close()
+        self.mylog.debug('结束http请求')
 
     @data(*data_case)
-    def test_register(self, item):
-        global COOKIES, result
-        params = json.loads(DoRegex().replace(item['params']))
+    def test_register(self,case):
+        global COOKIES
+        params = json.loads(case.params)
         # 如果mobilephone 等于 phone ,那么去配置文件中获取初始手机号码
         if params['mobilephone'] == 'phone':
-            value = int(self.conf.get('register', 'phone'))
-            params['mobilephone'] = value
-            # 手机号码使用之后将手机号码+1写会配置文件
-            self.conf.set('register', 'phone', str(value + 1))
-        url = self.conf.get('url', 'url') + item['url']
-        resp = Request(method=item['method'], url=url, data=params, cookies=COOKIES)
+            value =  int(conf.get('register', 'phone'))
+            params['mobilephone'] =value
+            #手机号码使用之后将手机号码+1写会配置文件
+            conf.set('register', 'phone', str(value + 1))
+        url = getattr(contex, 'url') + case.url
+        resp = Request(method=case.method, url=url, data=params, cookies=COOKIES)
+        self.mylog.info('请求数据是:{}'.format(params))
+        self.mylog.debug('请求完成，服务器响应码是：{}'.format(resp.status_code()))
+        # 设置COOKIES的值
         if resp.cookies():
             COOKIES = resp.cookies()
+        # 请求完成后获取响应报文 ，在判断响应报文是否和预期结果一致
+        # sql = 'SELECT * FROM future.member WHERE MobilePhone = {}'.format(params['mobilephone'])
+        # if mysql.fet_one(sql=sql):
+        #     sql_value = 'Pass'
+        # else:
+        #     sql_value = 'Failed'
         actual = resp.get_txt()
+        result = None
         try:
-            self.assertEqual(actual, item['excepted'])
-            sql = 'SELECT * FROM future.member WHERE MobilePhone = "{}"'.format(params['mobilephone'])
-            if resp.get_json()['msg'] == '注册成功':  # 注册成功的用例查询数据库是否有改条数据
-                check_db = self.mysql.fet_one(sql=sql)
-                self.mylog.info('数据库查询结果：{}'.format(check_db))
-                self.assertEqual(check_db['MobilePhone'],str(params['mobilephone']))
-            result = 'Pass'
-            self.mylog.info('执行《{}》用例，执行结果是：{}'.format(item['title'], result))
+            self.assertEqual(actual, case.expected)
+            result = 'PASS'
+            self.mylog.info('{}:用例执行通过'.format(case.title))
         except Exception as e:
-            result = 'Falied'
-            self.mylog.error('执行《{}》用例，执行结果是：{}'.format(item['title'], result))
+            result = 'FAIL'
+            self.mylog.info('{}:用例执行未通过'.format(case.title))
             raise e
         finally:
-            read.write_result('register', item['caseid'], actual, result)
-            self.mylog.info('《{}》用例，测试结果写入完成'.format(item['title']))
+            read.write_result(case.caseid + 1, 7, resp.get_txt())
+            read.write_result(case.caseid + 1, 8, result)
+            self.mylog.info('{}:测试结果写入完成'.format(case.title))
+
 

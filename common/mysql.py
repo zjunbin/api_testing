@@ -7,11 +7,10 @@ import pymysql
 from common.doregex import *
 from common.readconfig import ReadConfig
 
-
+conf = ReadConfig()
 
 class MySql:
     def __init__(self):
-        conf = ReadConfig()
         host = conf.get('mysql', 'host')
         user = conf.get('mysql', 'user')
         password = conf.get('mysql', 'pwd')
@@ -41,15 +40,7 @@ class MySql:
 
 if __name__ == '__main__':
     mysql = MySql()
-    sql = 'SELECT * FROM future.member WHERE MobilePhone = "13822221114"'
+    sql = 'SELECT l.Id AS Id ,l.Amount AS Amount from future.member  m LEFT JOIN future.loan l \
+        ON m.Id = l.MemberID WHERE m.MobilePhone = "13822221112" AND Title= "买飞机" AND Status < 4'
     value =mysql.fet_one(sql)
-    print(type(value))
-    try:
-        assert  value == None
-        print('pass')
-    except Exception as e:
-        print('failed')
-
-
-    print(type(None))
-
+    print(value)
