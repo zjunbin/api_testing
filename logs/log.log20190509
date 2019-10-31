@@ -1,0 +1,35 @@
+2019-05-09 13:59:18,375 [DEBUG] mylog.py [line:28] mylog日志信息：判断有无初始化的cookies值
+2019-05-09 13:59:18,380 [DEBUG] mylog.py [line:28] mylog日志信息：获取到的cookies值是：None
+2019-05-09 13:59:18,511 [INFO] mylog.py [line:30] mylog日志信息：执行正常登录的用例
+2019-05-09 13:59:18,514 [INFO] mylog.py [line:30] mylog日志信息：请求数据{'mobilephone': '13822221112', 'pwd': '123456'}
+2019-05-09 13:59:18,518 [ERROR] mylog.py [line:34] mylog日志信息：执行正常登录的用例,错误信息是：'{"status":0,"code":"20111","data":null,"msg":"用户名或密码错误"}' != '{"status":1,"code":"10001","data":null,"msg":"登录成功"}'
+- {"status":0,"code":"20111","data":null,"msg":"用户名或密码错误"}
+?           ^         ^ ^^                      ^^^^^^^^
++ {"status":1,"code":"10001","data":null,"msg":"登录成功"}
+?           ^         ^ ^^                      ^^^^
+
+2019-05-09 13:59:18,769 [INFO] mylog.py [line:30] mylog日志信息：写入测试结果完成
+2019-05-09 13:59:18,908 [DEBUG] mylog.py [line:28] mylog日志信息：判断有无初始化的cookies值
+2019-05-09 13:59:18,914 [DEBUG] mylog.py [line:28] mylog日志信息：获取到的cookies值是：None
+2019-05-09 13:59:19,019 [INFO] mylog.py [line:30] mylog日志信息：执行手机号为空的用例
+2019-05-09 13:59:19,024 [INFO] mylog.py [line:30] mylog日志信息：请求数据{'mobilephone': '', 'pwd': '123456'}
+2019-05-09 13:59:19,030 [INFO] mylog.py [line:30] mylog日志信息：执行手机号为空的用例：PASS
+2019-05-09 13:59:19,292 [INFO] mylog.py [line:30] mylog日志信息：写入测试结果完成
+2019-05-09 13:59:19,297 [DEBUG] mylog.py [line:28] mylog日志信息：判断有无初始化的cookies值
+2019-05-09 13:59:19,301 [DEBUG] mylog.py [line:28] mylog日志信息：获取到的cookies值是：None
+2019-05-09 13:59:19,403 [INFO] mylog.py [line:30] mylog日志信息：执行密码为空的用例
+2019-05-09 13:59:19,407 [INFO] mylog.py [line:30] mylog日志信息：请求数据{'mobilephone': '18688773468', 'pwd': ''}
+2019-05-09 13:59:19,411 [INFO] mylog.py [line:30] mylog日志信息：执行密码为空的用例：PASS
+2019-05-09 13:59:19,668 [INFO] mylog.py [line:30] mylog日志信息：写入测试结果完成
+2019-05-09 13:59:19,674 [DEBUG] mylog.py [line:28] mylog日志信息：判断有无初始化的cookies值
+2019-05-09 13:59:19,678 [DEBUG] mylog.py [line:28] mylog日志信息：获取到的cookies值是：None
+2019-05-09 13:59:19,784 [INFO] mylog.py [line:30] mylog日志信息：执行手机号错误的用例
+2019-05-09 13:59:19,793 [INFO] mylog.py [line:30] mylog日志信息：请求数据{'mobilephone': '19688773468', 'pwd': '123456'}
+2019-05-09 13:59:19,800 [INFO] mylog.py [line:30] mylog日志信息：执行手机号错误的用例：PASS
+2019-05-09 13:59:20,071 [INFO] mylog.py [line:30] mylog日志信息：写入测试结果完成
+2019-05-09 13:59:20,077 [DEBUG] mylog.py [line:28] mylog日志信息：判断有无初始化的cookies值
+2019-05-09 13:59:20,080 [DEBUG] mylog.py [line:28] mylog日志信息：获取到的cookies值是：None
+2019-05-09 13:59:20,183 [INFO] mylog.py [line:30] mylog日志信息：执行密码错误的用例
+2019-05-09 13:59:20,186 [INFO] mylog.py [line:30] mylog日志信息：请求数据{'mobilephone': '18688773468', 'pwd': '@@###8888'}
+2019-05-09 13:59:20,190 [INFO] mylog.py [line:30] mylog日志信息：执行密码错误的用例：PASS
+2019-05-09 13:59:20,443 [INFO] mylog.py [line:30] mylog日志信息：写入测试结果完成

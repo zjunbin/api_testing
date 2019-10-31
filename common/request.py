@@ -44,22 +44,23 @@ class Request:
         return self.resp.status_code
 
 if __name__ == '__main__':
-    url = 'http://47.107.168.87:8080/futureloan/mvc/api/member/login'
-    url1 = 'http://47.107.168.87:8080/futureloan/mvc/api/member/withdraw'
+    url = 'http://120.78.128.25:8765/futureloan/mvc/api/member/login'
+    # url1 = 'http://47.107.168.87:8080/futureloan/mvc/api/member/withdraw'
+    url1 = 'http://120.78.128.25:8765/futureloan/mvc/api/member/recharge'
     # url2 = 'http://47.107.168.87:8080/futureloan/mvc/api/loan/add'
     # url4 = 'http://47.107.168.87:8080/futureloan/mvc/api/member/bidLoan'
     # url5 = 'http://47.107.168.87:8080/futureloan/mvc/api/loan/audit'
 
-    params = {"mobilephone":"13822221112","pwd":"123456"}
+    params = {"mobilephone":"18684720553","pwd":"python"}
     # data = {"mobilephone": "13566666666", "amount": "30"}
     # data = {"memberId":"1125830","title":"买房","amount":"300000","loanRate":"20","loanTerm":"12","loanDateType":"0","repaymemtWay":"4","biddingDays":"10"}
     # data =   {'loanTerm': '12', 'loanDateType': '2', 'amount': '30000', 'loanRate': '18.0', 'biddingDays': '5', 'title': '买飞机', 'loanid_user_id': '1126396', 'repaymemtWay': '4'}
     # data2= {"id":"17659","status":"4"}
     # data3 ={"memberId":"1126396","password":"123456","loanId":"17659","amount":"999"}
-    data1 = {"mobilephone":"13822221112","amount":"500000"}
+    data1 = {"mobilephone":"18684720553","amount":"500000"}
     re = requests.session()
     resp = re.request(method='get',url=url,params=params)
-    resp = requests.get(url,params=params)
-    print(resp.text)
+    # resp = requests.get(url,params=params)
+    # print(resp.text)
     resp2 =re.request(method='post',url=url1,data=data1)
     print(resp2.text)
